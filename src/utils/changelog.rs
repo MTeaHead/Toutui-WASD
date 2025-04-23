@@ -156,7 +156,7 @@ let changelog_08 = format!(
          ####\n",
 );
 let changelog_09 = format!(
-    "Changelog Toutui v{} (02/04/2025) \n\
+    "Changelog Toutui v0.3.3-beta (02/04/2025) \n\
          \n\
          Changed:\n\
          \n\
@@ -169,9 +169,23 @@ let changelog_09 = format!(
          \n\
          Enjoy and be toutui!\n
          ####\n",
+);
+let changelog_10 = format!(
+    "Changelog Toutui v{} (23/04/2025) \n\
+         \n\
+         Fix:\n\
+         \n\
+         Handle empty podcast episode lists gracefully. Prevent panic and show 'No episodes' message. by @denispol in https://github.com/AlbanDAVID/Toutui/pull/22\n\
+         Contributors:\n\
+         \n\
+         - AlbanDAVID, denispol
+         \n\
+         Enjoy and be toutui!\n
+         ####\n",
          VERSION
 );
 
+    changelog.push_str(&changelog_10); 
     changelog.push_str(&changelog_09); 
     changelog.push_str(&changelog_08); 
     changelog.push_str(&changelog_07); 
