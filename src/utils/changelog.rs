@@ -134,7 +134,7 @@ To make it work properly, perform a fresh reinstall.
          ####\n",
 );
 let changelog_08 = format!(
-    "Changelog Toutui v{} (26/03/2025) \n\
+    "Changelog Toutui v0.3.2-beta (26/03/2025) \n\
          Added:\n\
          \n\
          - macOS compatibility.
@@ -154,9 +154,39 @@ let changelog_08 = format!(
          \n\
          Enjoy and be toutui!\n
          ####\n",
+);
+let changelog_09 = format!(
+    "Changelog Toutui v0.3.3-beta (02/04/2025) \n\
+         \n\
+         Changed:\n\
+         \n\
+         - Adding a login placeholder to specify the use of http:// or https:// for the server address.
+         - Display error login message without time limit.
+         \n\
+         Contributors:\n\
+         \n\
+         - AlbanDAVID
+         \n\
+         Enjoy and be toutui!\n
+         ####\n",
+);
+let changelog_10 = format!(
+    "Changelog Toutui v{} (23/04/2025) \n\
+         \n\
+         Fix:\n\
+         \n\
+         Handle empty podcast episode lists gracefully. Prevent panic and show 'No episodes' message. by @denispol in https://github.com/AlbanDAVID/Toutui/pull/22\n\
+         Contributors:\n\
+         \n\
+         - AlbanDAVID, denispol
+         \n\
+         Enjoy and be toutui!\n
+         ####\n",
          VERSION
 );
 
+    changelog.push_str(&changelog_10); 
+    changelog.push_str(&changelog_09); 
     changelog.push_str(&changelog_08); 
     changelog.push_str(&changelog_07); 
     changelog.push_str(&changelog_06); 
