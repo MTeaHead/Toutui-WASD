@@ -4,6 +4,9 @@ No major bug for the moment 🙏
 
 **MINOR**
 
+`bug_id: 255b86`
+**Loose config after an update**: Ex: You change colors in config file and after an update, this configuration is lost and replaced by the config from main version.
+
 `bug_id: 4b3045`
 **Authentification Bug:** Even if you fill in valid credentials, the database sync can be buggy, and authentication may fail. Normally, it works on the second try.
 
