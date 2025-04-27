@@ -350,7 +350,7 @@ impl App {
 
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
-        let render_list_title = "Episodes";
+
         let text_render_footer = "j/↓, k/↑: move, l/→: play, h: back, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n '/': search, Scroll desc: J(down) K(up) H(top), g/G: top/bottom";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
@@ -365,8 +365,10 @@ impl App {
                     .block(Block::new().borders(Borders::TOP).border_style(Style::new().fg(Color::DarkGray)))
                     .render(main_area, buf);
             } else {
+                let items_number = self.titles_pod_ep_search.len();
+                let render_list_title = format!("Episodes [{} items]", items_number);
                 // Only render list/info/desc if episodes exist
-                self.render_list(list_area, buf, render_list_title, &self.titles_pod_ep_search.clone(), &mut self.list_state_pod_ep.clone());
+                self.render_list(list_area, buf, &render_list_title, &self.titles_pod_ep_search.clone(), &mut self.list_state_pod_ep.clone());
                 self.render_info_pod_ep_search(item_area1, buf, &mut &self.list_state_pod_ep.clone());
                 self.render_desc_pod_ep_search(item_area2, buf, &mut &self.list_state_pod_ep.clone());
             }
@@ -378,8 +380,10 @@ impl App {
                     .block(Block::new().borders(Borders::TOP).border_style(Style::new().fg(Color::DarkGray)))
                     .render(main_area, buf);
             } else {
+                let items_number = self.titles_pod_ep.len();
+                let render_list_title = format!("Episodes [{} items]", items_number);
                 // Only render list/info/desc if episodes exist
-                self.render_list(list_area, buf, render_list_title, &self.titles_pod_ep.clone(), &mut self.list_state_pod_ep.clone());
+                self.render_list(list_area, buf, &render_list_title, &self.titles_pod_ep.clone(), &mut self.list_state_pod_ep.clone());
                 self.render_info_pod_ep(item_area1, buf, &mut &self.list_state_pod_ep.clone());
                 self.render_desc_pod_ep(item_area2, buf, &mut &self.list_state_pod_ep.clone());
             }
