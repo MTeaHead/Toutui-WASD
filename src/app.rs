@@ -1200,7 +1200,12 @@ pub fn select_next(&mut self) {
                 self.list_state_settings.select_first();
             }}}
         AppView::SettingsAccount => self.list_state_settings_account.select_next(),
-        AppView::SettingsLibrary => self.list_state_settings_library.select_next(),
+        AppView::SettingsLibrary => { if let Some(selected) = self.list_state_settings_library.selected() {
+            if selected + 1  < self.media_types.len() {
+                self.list_state_settings_library.select_next();
+            } else {
+                self.list_state_settings_library.select_first();
+            }}}
         AppView::SettingsAbout => self.list_state_settings_library.select_next(),
     }
 }
@@ -1258,7 +1263,10 @@ pub fn select_last(&mut self) {
             self.list_state_settings.select(Some(last_index));
         }            
         AppView::SettingsAccount => self.list_state_settings_account.select_last(),
-        AppView::SettingsLibrary => self.list_state_settings_library.select_last(),
+        AppView::SettingsLibrary => {
+            let last_index = self.media_types.len() - 1;
+            self.list_state_settings_library.select(Some(last_index));
+        }            
         AppView::SettingsAbout => self.list_state_settings_about.select_last(),
     }
 }

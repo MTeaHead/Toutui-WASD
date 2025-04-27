@@ -49,12 +49,14 @@ impl App {
 
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
-        let render_list_title = "Continue Listening";
+        let items_number = self._titles_cnt_list.len();
+        let render_list_title = format!("Continue Listening [{} items]", items_number);
+
         let text_render_footer = "j/↓, k/↑: move, l/→: play, Tab: library, R: refresh, S: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: J(↓) K(↑) H(⇡), g/G: top/bot";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self._titles_cnt_list.clone(), &mut self.list_state_cnt_list.clone());
+        self.render_list(list_area, buf, &render_list_title, &self._titles_cnt_list.clone(), &mut self.list_state_cnt_list.clone());
         if !&self._titles_cnt_list.is_empty() {
             self.render_info_home(item_area1, buf, &mut self.list_state_cnt_list.clone());
             self.render_desc_home(item_area2, buf, &mut self.list_state_cnt_list.clone());
@@ -73,7 +75,8 @@ impl App {
 
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
-        let render_list_title = "Library";
+        let items_number = self.titles_library.len();
+        let render_list_title = format!("Library [{} items]", items_number);
 
         let mut _text_render_footer = "";
         if self.is_podcast {
@@ -84,7 +87,7 @@ impl App {
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, _text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self.titles_library.clone(), &mut self.list_state_library.clone());
+        self.render_list(list_area, buf, &render_list_title, &self.titles_library.clone(), &mut self.list_state_library.clone());
         if !&self.titles_library.is_empty() {
             self.render_info_library(item_area1, buf, &mut self.list_state_library.clone());
             self.render_desc_library(item_area2, buf, &mut self.list_state_library.clone());
@@ -151,15 +154,17 @@ impl App {
             Constraint::Length(2),
         ]).areas(area);
 
-        let [list_area, _item_area] = Layout::vertical([Constraint::Fill(1), Constraint::Fill(1),]).areas(main_area);
+        let [list_area, item_area] = Layout::vertical([Constraint::Fill(1), Constraint::Fill(1),]).areas(main_area);
 
-        let render_list_title = "Settings library";
+        let items_number = self.libraries_names.len();
+        let render_list_title = format!("Settings Library [{} items]", items_number);
+
         let text_render_footer = "h: back, l/→: change library,\n Tab: home, R: refresh, Q/Esc: quit.";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self.libraries_names.clone(), &mut &mut self.list_state_settings_library.clone());
-        //self.render_selected_item(item_area, buf, &self.titles_library.clone(), self.auth_names_library.clone());
+        self.render_list(list_area, buf, &render_list_title, &self.libraries_names.clone(), &mut self.list_state_settings_library.clone());
+        self.render_info_settings_library(item_area, buf, &mut self.list_state_settings_library.clone());
     }
 
 
@@ -347,7 +352,7 @@ impl App {
 
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
-        let render_list_title = "Episodes";
+
         let text_render_footer = "j/↓, k/↑: move, l/→: play, h: back, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n '/': search, Scroll desc: J(down) K(up) H(top), g/G: top/bottom";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
@@ -362,8 +367,10 @@ impl App {
                     .block(Block::new().borders(Borders::TOP).border_style(Style::new().fg(Color::DarkGray)))
                     .render(main_area, buf);
             } else {
+                let items_number = self.titles_pod_ep_search.len();
+                let render_list_title = format!("Episodes [{} items]", items_number);
                 // Only render list/info/desc if episodes exist
-                self.render_list(list_area, buf, render_list_title, &self.titles_pod_ep_search.clone(), &mut self.list_state_pod_ep.clone());
+                self.render_list(list_area, buf, &render_list_title, &self.titles_pod_ep_search.clone(), &mut self.list_state_pod_ep.clone());
                 self.render_info_pod_ep_search(item_area1, buf, &mut &self.list_state_pod_ep.clone());
                 self.render_desc_pod_ep_search(item_area2, buf, &mut &self.list_state_pod_ep.clone());
             }
@@ -375,15 +382,17 @@ impl App {
                     .block(Block::new().borders(Borders::TOP).border_style(Style::new().fg(Color::DarkGray)))
                     .render(main_area, buf);
             } else {
+                let items_number = self.titles_pod_ep.len();
+                let render_list_title = format!("Episodes [{} items]", items_number);
                 // Only render list/info/desc if episodes exist
-                self.render_list(list_area, buf, render_list_title, &self.titles_pod_ep.clone(), &mut self.list_state_pod_ep.clone());
+                self.render_list(list_area, buf, &render_list_title, &self.titles_pod_ep.clone(), &mut self.list_state_pod_ep.clone());
                 self.render_info_pod_ep(item_area1, buf, &mut &self.list_state_pod_ep.clone());
                 self.render_desc_pod_ep(item_area2, buf, &mut &self.list_state_pod_ep.clone());
             }
         }
     }
 
-    /// General functions for rendering 
+    // General functions for rendering 
 
     fn render_header(area: Rect, buf: &mut Buffer, library_name: String, username: &str, server_address_pretty: &str, version: &str) {
         Paragraph::new(library_name)
@@ -716,6 +725,19 @@ impl App {
                 }
             _ =>  {}
         }
+    }
+
+    // info for settings library
+    fn render_info_settings_library(&self, area: Rect, buf: &mut Buffer, list_state: &ListState) {
+
+        if let Some(selected) = list_state.selected() {
+                Paragraph::new(format!("Type: {}", 
+                        self.media_types[selected], 
+                ))
+                    .left_aligned()
+                    .render(area, buf);
+            } 
+
     }
 
     fn alternate_colors(i: usize) -> Color {

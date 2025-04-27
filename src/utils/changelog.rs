@@ -171,7 +171,7 @@ let changelog_09 = format!(
          ####\n",
 );
 let changelog_10 = format!(
-    "Changelog Toutui v{} (23/04/2025) \n\
+    "Changelog Toutui v0.3.4-beta (23/04/2025) \n\
          \n\
          Fix:\n\
          \n\
@@ -182,9 +182,30 @@ let changelog_10 = format!(
          \n\
          Enjoy and be toutui!\n
          ####\n",
+);
+let changelog_11 = format!(
+    "Changelog Toutui v{} (27/04/2025) \n\
+         \n\
+         Added:\n\
+         - Display number of total items for continue listening, library and library settings (for books and podcasts)
+         - Clap crate and a function to display the version in the CLI (e.g. `toutui --version`)
+         \n\
+         Fixed:\n\
+         \n\
+         - [macos] vlc version not displayed in listening sessions (from ABS web browser)
+         - Out of bounds in Library Settings
+         \n\
+         Contributors:\n\
+         \n\
+         - AlbanDAVID
+         \n\
+         Enjoy and be toutui!\n
+         ####\n",
          VERSION
 );
 
+
+    changelog.push_str(&changelog_11); 
     changelog.push_str(&changelog_10); 
     changelog.push_str(&changelog_09); 
     changelog.push_str(&changelog_08); 
