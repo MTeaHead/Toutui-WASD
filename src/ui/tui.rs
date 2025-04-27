@@ -73,7 +73,8 @@ impl App {
 
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
-        let render_list_title = "Library";
+        let items_number = self.titles_library.len();
+        let render_list_title = format!("Library [{} items]", items_number);
 
         let mut _text_render_footer = "";
         if self.is_podcast {
@@ -84,7 +85,7 @@ impl App {
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, _text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self.titles_library.clone(), &mut self.list_state_library.clone());
+        self.render_list(list_area, buf, &render_list_title, &self.titles_library.clone(), &mut self.list_state_library.clone());
         if !&self.titles_library.is_empty() {
             self.render_info_library(item_area1, buf, &mut self.list_state_library.clone());
             self.render_desc_library(item_area2, buf, &mut self.list_state_library.clone());
