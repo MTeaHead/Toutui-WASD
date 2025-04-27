@@ -731,7 +731,6 @@ impl App {
     fn render_info_settings_library(&self, area: Rect, buf: &mut Buffer, list_state: &ListState) {
 
         if let Some(selected) = list_state.selected() {
-            log::info!("{:?}", self.media_types);
                 Paragraph::new(format!("Type: {}", 
                         self.media_types[selected], 
                 ))
