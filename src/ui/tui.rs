@@ -156,12 +156,14 @@ impl App {
 
         let [list_area, item_area] = Layout::vertical([Constraint::Fill(1), Constraint::Fill(1),]).areas(main_area);
 
-        let render_list_title = "Settings library";
+        let items_number = self.libraries_names.len();
+        let render_list_title = format!("Settings Library [{} items]", items_number);
+
         let text_render_footer = "h: back, l/→: change library,\n Tab: home, R: refresh, Q/Esc: quit.";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self.libraries_names.clone(), &mut self.list_state_settings_library.clone());
+        self.render_list(list_area, buf, &render_list_title, &self.libraries_names.clone(), &mut self.list_state_settings_library.clone());
         self.render_info_settings_library(item_area, buf, &mut self.list_state_settings_library.clone());
     }
 
