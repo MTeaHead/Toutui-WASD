@@ -1,6 +1,6 @@
 [package]
 name = "Toutui"
-version = "0.3.4-beta"
+version = "0.3.5-beta"
 edition = "2021"
 
 [dependencies]
