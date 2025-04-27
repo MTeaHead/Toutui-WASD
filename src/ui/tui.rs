@@ -49,12 +49,14 @@ impl App {
 
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
-        let render_list_title = "Continue Listening";
+        let items_number = self._titles_cnt_list.len();
+        let render_list_title = format!("Continue Listening [{} items]", items_number);
+
         let text_render_footer = "j/↓, k/↑: move, l/→: play, Tab: library, R: refresh, S: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: J(↓) K(↑) H(⇡), g/G: top/bot";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self._titles_cnt_list.clone(), &mut self.list_state_cnt_list.clone());
+        self.render_list(list_area, buf, &render_list_title, &self._titles_cnt_list.clone(), &mut self.list_state_cnt_list.clone());
         if !&self._titles_cnt_list.is_empty() {
             self.render_info_home(item_area1, buf, &mut self.list_state_cnt_list.clone());
             self.render_desc_home(item_area2, buf, &mut self.list_state_cnt_list.clone());
