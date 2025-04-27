@@ -154,15 +154,15 @@ impl App {
             Constraint::Length(2),
         ]).areas(area);
 
-        let [list_area, _item_area] = Layout::vertical([Constraint::Fill(1), Constraint::Fill(1),]).areas(main_area);
+        let [list_area, item_area] = Layout::vertical([Constraint::Fill(1), Constraint::Fill(1),]).areas(main_area);
 
         let render_list_title = "Settings library";
         let text_render_footer = "h: back, l/→: change library,\n Tab: home, R: refresh, Q/Esc: quit.";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
-        self.render_list(list_area, buf, render_list_title, &self.libraries_names.clone(), &mut &mut self.list_state_settings_library.clone());
-        //self.render_selected_item(item_area, buf, &self.titles_library.clone(), self.auth_names_library.clone());
+        self.render_list(list_area, buf, render_list_title, &self.libraries_names.clone(), &mut self.list_state_settings_library.clone());
+        self.render_info_settings_library(item_area, buf, &mut self.list_state_settings_library.clone());
     }
 
 
@@ -390,7 +390,7 @@ impl App {
         }
     }
 
-    /// General functions for rendering 
+    // General functions for rendering 
 
     fn render_header(area: Rect, buf: &mut Buffer, library_name: String, username: &str, server_address_pretty: &str, version: &str) {
         Paragraph::new(library_name)
@@ -723,6 +723,20 @@ impl App {
                 }
             _ =>  {}
         }
+    }
+
+    // info for settings library
+    fn render_info_settings_library(&self, area: Rect, buf: &mut Buffer, list_state: &ListState) {
+
+        if let Some(selected) = list_state.selected() {
+            log::info!("{:?}", self.media_types);
+                Paragraph::new(format!("Type: {}", 
+                        self.media_types[selected], 
+                ))
+                    .left_aligned()
+                    .render(area, buf);
+            } 
+
     }
 
     fn alternate_colors(i: usize) -> Color {
