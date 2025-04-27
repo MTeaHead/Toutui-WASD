@@ -111,7 +111,15 @@ pub async fn is_vlc_running(port: String, address: String) -> bool {
 
 // get vlc version
 pub async fn get_vlc_version() -> Result<String, io::Error> {
-    let output = Command::new("vlc")
+
+    let command: &str;
+    if cfg!(target_os = "macos") {
+        command = "/Applications/VLC.app/Contents/MacOS/VLC"
+    } else {
+        command = "vlc"
+    }
+
+    let output = Command::new(command)
         .arg("--version")
         .output()?;
 
