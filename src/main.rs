@@ -27,9 +27,13 @@ use crate::player::integrated::player_info::*;
 use crate::ui::player_tui::*;
 use std::env;
 use std::path::PathBuf;
+use crate::utils::clap::*;
 
 #[tokio::main]
 async fn main() -> Result<()> {
+
+    // clap 
+    clap();
 
     // this function allow to write all the logs in a file 
     setup_logs().expect("Failed to execute logger");

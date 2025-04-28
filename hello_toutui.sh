@@ -452,7 +452,8 @@ install_toutui() {
     cargo build --release
     # copy Toutui binary to system path
     sudo cp ./target/release/Toutui "${INSTALL_DIR}/toutui" || exit $EXIT_BUILD_FAIL
-    echo "[DONE] Install complete. Type \"toutui\" in your terminal to run it."
+    echo "[DONE] Install complete. Type toutui in your terminal to run it."
+    echo "[ADVICE] Explore themes: https://github.com/AlbanDAVID/Toutui-theme"
     echo "[ADVICE] Best experience with Kitty or Alacritty terminal."
     post_install_msg # only if .env not found
 }

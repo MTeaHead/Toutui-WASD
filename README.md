@@ -10,9 +10,12 @@
 </p>
 
 <p align="center">
-    <img src="assets/demo_2.gif" alt="🎬 Demo">
+    <img src="assets/demo_3.gif" alt="🎬 Demo">
 </p>
 
+<div align="center">
+🎨 Explore and try various themes <a href="https://github.com/AlbanDAVID/Toutui-theme">here.</a>
+</div>
 
 ## ✨ Features  
 ✅ **Cross-platform** – <img src=".github/tux.png" align="top" width="24" alt="Tux (Linux)"/>  Linux and <img src=".github/apple.png" align="top" width="24" alt="Apple (macOS)"/> macOS    
@@ -29,7 +32,7 @@
 ## 🛠️ Roadmap  
 **Short-term Goals**  
 - Since this is a beta version, the main focus is on tracking and fixing bugs.
-- Currently working on the next release: [v0.3.5-beta]
+- Currently working on the next release: [v0.3.6-beta]
 
 **Mid-term Goals**  
 - Put the app on yay    
