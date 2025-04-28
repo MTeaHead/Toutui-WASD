@@ -174,7 +174,7 @@ get_distro() {
 
 install_brew() {
     # adapted from https://brew.sh/
-    curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | /usr/bin/env bash
+    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 }
 
 install_from_source() {
