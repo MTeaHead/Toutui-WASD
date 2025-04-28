@@ -43,13 +43,11 @@ load_dependencies() {
         debian:libssl-dev:no_check \
         fedora:nc \
         linux:curl \
-        linux:git \
         *linux:kitty \
         linux:pkg-config \
         linux:sqlite3 \
         linux:vlc  \
         macOS:curl \
-        #macOS:git \
         *macOS:kitty \
         macOS:netcat\
         #%macOS:openssl \
