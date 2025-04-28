@@ -34,28 +34,28 @@ load_dependencies() {
     # Hard Coded dependencies here.
     # os:package_to_install(:cmd)?
     HC_DEPS=(
-        linux:curl \
-        linux:vlc  \
-        linux:pkg-config \
-        linux:git \
-        debian:libssl-dev:no_check \
-        linux:sqlite3 \
-        debian:libsqlite3-dev:no_check \
+        arch:gnu-netcat:netcat \
         centos:libsqlite3-dev:no_check \
-        macOS:git \
-        macOS:sqlite3 \
-        macOS:vlc \
-        macOS:curl \
-        macOS:pkg-config \
-        %macOS:openssl \
+        centos:nc \
         *centos:epel-release \
+        debian:netcat \
+        debian:libsqlite3-dev:no_check \
+        debian:libssl-dev:no_check \
+        fedora:nc \
+        linux:curl \
+        linux:git \
         *linux:kitty \
+        linux:pkg-config \
+        linux:sqlite3 \
+        linux:vlc  \
+        macOS:curl \
+        #macOS:git \
         *macOS:kitty \
         macOS:netcat\
-        debian:netcat \
-        fedora:nc \
-        centos:nc \
-        arch:gnu-netcat:netcat \
+        #%macOS:openssl \
+        macOS:pkg-config \
+        macOS:sqlite3 \
+        macOS:vlc \
         opensuse:netcat \
     )
     # Format: <OS|distrubtion>:<package_name>[:<cmd>|no_check]
