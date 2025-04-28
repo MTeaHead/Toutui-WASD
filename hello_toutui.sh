@@ -170,10 +170,10 @@ get_distro() {
     echo "$distro"
 }
 
-install_brew() {
-    # adapted from https://brew.sh/
-    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-}
+#install_brew() {
+#    # adapted from https://brew.sh/
+#    bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#}
 
 install_from_source() {
     echo "[ERROR] Could not identify OS/Distro."
@@ -260,7 +260,9 @@ install_packages() {
             if command -v brew >/dev/null 2>&1; then
                 brew install ${dep[@]}
             else
-                install_brew
+                #install_brew
+                echo "[ERROR] Please install \"brew\"."
+		        exit $EXIT_FAIL
             fi;;
     esac
     echo "[INFO] Packages installed successfully."
@@ -368,21 +370,15 @@ dep_already_installed() {
             opensuse*) (zypper se --installed-only "$pkg_name" &>/dev/null)2>/dev/null && installed="true";;
         esac
     elif [[ $OS == "macOS" ]]; then
-        if command -v brew >/dev/null 2>&1; then
-            if brew list "${pkg_name}" >/dev/null 2>&1; then
-                installed="true"
-            fi
-        else
-            install_brew
-        fi
+        (brew list | grep "^${pkg_name}$") && installed="true"
     fi
     if [[ $installed == "false" ]]; then
-        if [[ $cmd_check != "no_check" && $(command -v $cmd_check >/dev/null 2>&1) ]]; then
+        if [[ $cmd_check != "no_check" && $(command -v $cmd_check 2>/dev/null) ]]; then
             installed="true"
         fi
     fi
     echo $installed
-}
+    }
 
 install_deps() {
     # Grab dependencies and optional dependencies
