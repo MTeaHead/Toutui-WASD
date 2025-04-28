@@ -378,6 +378,23 @@ dep_already_installed() {
         fi
     fi
     echo $installed
+#        esac
+#    elif [[ $OS == "macOS" ]]; then
+#        if command -v brew >/dev/null 2>&1; then
+#            if brew list "${pkg_name}" >/dev/null 2>&1; then
+#                installed="true"
+#            fi
+#        else
+#            install_brew
+#        fi
+#    fi
+#    if [[ $installed == "false" ]]; then
+#        if [[ $cmd_check != "no_check" && $(command -v $cmd_check >/dev/null 2>&1) ]]; then
+#            installed="true"
+#        fi
+#    fi
+#    echo $installed
+
     }
 
 install_deps() {
