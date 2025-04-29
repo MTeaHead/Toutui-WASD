@@ -91,7 +91,7 @@ To ensure the best experience, it's recommended to use **Kitty** or **Alacritty*
 
 [![GitHub release](https://img.shields.io/github/v/release/AlbanDAVID/Toutui?label=Latest%20Release&cacheSeconds=3600)](https://github.com/AlbanDAVID/Toutui/releases/latest)
 ```bash
-git clone https://github.com/AlbanDAVID/Toutui
+git clone --branch stable --single-branch https://github.com/AlbanDAVID/Toutui
 cd Toutui/
 chmod +x hello_toutui.sh
 ./hello_toutui.sh install
