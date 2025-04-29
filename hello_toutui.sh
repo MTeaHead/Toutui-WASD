@@ -247,23 +247,23 @@ install_packages() {
     if (( ${#dep} == 0 )); then return; fi
     case $OS in
         linux)
-            DISTRO=${DISTRO:-$(get_distro)}
-            case "$DISTRO" in
+	    DISTRO=${DISTRO:-$(get_distro)}
+    	    case "$DISTRO" in
                 arch*) sudo pacman -S ${dep[@]};;
                 debian*) sudo apt install -y ${dep[@]};;
                 fedora*) sudo dnf install -y ${dep[@]};;
                 centos*) sudo yum install -y ${dep[@]};;
                 opensuse*) sudo zypper install -y ${dep[@]};;
                 *) install_from_source;;
-            esac ;;
+    	    esac ;;
         macOS)
-            if command -v brew >/dev/null 2>&1; then
-                brew install ${dep[@]}
-            else
-                #install_brew
-                echo "[ERROR] Please install \"brew\"."
-		        exit $EXIT_FAIL
-            fi;;
+	    if command -v brew >/dev/null 2>&1; then
+    	        brew install ${dep[@]}
+    	    else
+    	        #install_brew
+    	        echo "[ERROR] Please install \"brew\"."
+    	        exit $EXIT_FAIL
+    	    fi ;;
     esac
     echo "[INFO] Packages installed successfully."
 }
@@ -378,24 +378,7 @@ dep_already_installed() {
         fi
     fi
     echo $installed
-#        esac
-#    elif [[ $OS == "macOS" ]]; then
-#        if command -v brew >/dev/null 2>&1; then
-#            if brew list "${pkg_name}" >/dev/null 2>&1; then
-#                installed="true"
-#            fi
-#        else
-#            install_brew
-#        fi
-#    fi
-#    if [[ $installed == "false" ]]; then
-#        if [[ $cmd_check != "no_check" && $(command -v $cmd_check >/dev/null 2>&1) ]]; then
-#            installed="true"
-#        fi
-#    fi
-#    echo $installed
-
-    }
+}
 
 install_deps() {
     # Grab dependencies and optional dependencies
