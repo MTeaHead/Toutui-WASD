@@ -66,9 +66,10 @@ To ensure the best experience, it's recommended to use **Kitty** or **Alacritty*
 
 ## 🚨 Installation Instructions
 
-### Easy installation
+### Easy installation from source
 
 >[!WARNING]
+> ❗ For now, Toutui is installed and compiled from source, but the process is simplified thanks to the hello_toutui.sh script.
 > - **This is a beta app, please read [this](https://github.com/AlbanDAVID/Toutui?tab=readme-ov-file#%EF%B8%8F-caution-beta-version).**    
 > - If you follow all the instructions but installation fails:
 >     - Check first the [wiki](https://github.com/AlbanDAVID/Toutui/wiki/Installation-issues).
