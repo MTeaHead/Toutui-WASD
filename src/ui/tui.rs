@@ -52,7 +52,7 @@ impl App {
         let items_number = self._titles_cnt_list.len();
         let render_list_title = format!("Continue Listening [{} items]", items_number);
 
-        let text_render_footer = "j/↓, k/↑: move, l/→: play, Tab: library, R: refresh, S: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: J(↓) K(↑) H(⇡), g/G: top/bot";
+        let text_render_footer = "s/↓, w/↑: move, d/→: play, Tab: library, R: refresh, E: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: W(↓) S(↑) A(⇡), g/G: top/bot";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
@@ -80,9 +80,9 @@ impl App {
 
         let mut _text_render_footer = "";
         if self.is_podcast {
-        _text_render_footer = "j/↓, k/↑: move, l/→: episodes, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: J(↓) K(↑) H(⇡), g/G: top/bot"       
+        _text_render_footer = "s/↓, w/↑: move, d/→: episodes, Tab: home, R: refresh, E: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: S(↓) W(↑) A(⇡), g/G: top/bot"       
         } else {
-        _text_render_footer = "j/↓, k/↑: move, l/→: play, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: J(↓) K(↑) H(⇡), g/G: top/bot";
+        _text_render_footer = "s/↓, w/↑: move, d/→: play, Tab: home, R: refresh, E: Settings, Q/Esc: quit\n B: toggle player ctrl, '/': search, Scroll desc: S(↓) W(↑) A(⇡), g/G: top/bot";
         }
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
@@ -111,9 +111,9 @@ impl App {
         let mut _text_render_footer = "";
         if self.list_state_settings.selected() == Some(2) {
             // for `About` section
-            _text_render_footer = "j/↓, k/↑: move, Scroll what's new: J(down) K(up) H(top),\n Tab: home, R: refresh, Q/Esc: quit.";
+            _text_render_footer = "w/↓, s/↑: move, Scroll what's new: S(down) W(up) A(top),\n Tab: home, R: refresh, Q/Esc: quit.";
         } else {
-            _text_render_footer = "j/↓, k/↑: move, l/→: see options,\n Tab: home, R: refresh, Q/Esc: quit.";
+            _text_render_footer = "w/↓, s/↑: move, d/→: see options,\n Tab: home, R: refresh, Q/Esc: quit.";
         }
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
@@ -136,7 +136,7 @@ impl App {
         let [list_area, _item_area] = Layout::vertical([Constraint::Fill(1), Constraint::Fill(1),]).areas(main_area);
 
         let render_list_title = "Settings account";
-        let text_render_footer = "h: back, l/→: remove saved user,\n Tab: home, R: refresh, Q/Esc: quit.";
+        let text_render_footer = "a: back, d/→: remove saved user,\n Tab: home, R: refresh, Q/Esc: quit.";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
@@ -183,9 +183,9 @@ impl App {
         let render_list_title = "Search result";
         let mut _text_render_footer = "";
         if self.is_podcast {
-        _text_render_footer = "j/↓, k/↑: move, l/→: episodes, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n '/': search, Scroll desc: J(down) K(up) H(top), g/G: top/bottom";
+        _text_render_footer = "s/↓, w/↑: move, d/→: episodes, Tab: home, R: refresh, E: Settings, Q/Esc: quit\n '/': search, Scroll desc: S(down) W(up) A(top), g/G: top/bottom";
         } else {
-        _text_render_footer = "j/↓, k/↑: move, l/→: play, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n '/': search, Scroll desc: J(down) K(up) H(top), g/G: top/bottom";
+        _text_render_footer = "s/↓, w/↑: move, d/→: play, Tab: home, R: refresh, E: Settings, Q/Esc: quit\n '/': search, Scroll desc: S(down) W(up) A(top), g/G: top/bottom";
         } 
 
 
@@ -353,7 +353,7 @@ impl App {
         let [list_area, item_area1, item_area2] = Layout::vertical([Constraint::Fill(1), Constraint::Length(3), Constraint::Fill(1)]).areas(main_area);
 
 
-        let text_render_footer = "j/↓, k/↑: move, l/→: play, h: back, Tab: home, R: refresh, S: Settings, Q/Esc: quit\n '/': search, Scroll desc: J(down) K(up) H(top), g/G: top/bottom";
+        let text_render_footer = "s/↓, w/↑: move, d/→: play, h: back, Tab: home, R: refresh, E: Settings, Q/Esc: quit\n '/': search, Scroll desc: S(down) W(up) A(top), g/G: top/bottom";
 
         App::render_header(header_area, buf, self.lib_name_type.clone(), &self.username, &self.server_address_pretty, VERSION);
         App::render_footer(footer_area, buf, text_render_footer);
