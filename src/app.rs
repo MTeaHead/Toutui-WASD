@@ -672,7 +672,7 @@ pub fn handle_key(&mut self, key: KeyEvent) {
         KeyCode::Char('/') => {
             let _ = self.search_active();
         }
-        KeyCode::Char('S') => {
+        KeyCode::Char('E') => {
             self.view_state = AppView::Settings;
         }
         KeyCode::Tab => {
@@ -704,22 +704,22 @@ pub fn handle_key(&mut self, key: KeyEvent) {
 
         }        
 
-        KeyCode::Char('j') | KeyCode::Down => {
+        KeyCode::Char('s') | KeyCode::Down => {
             self.select_next();
             self.scroll_offset = 0; 
 
         }
         // scroll up into description section
-        KeyCode::Char('J') => self.scroll_offset += 1,
+        KeyCode::Char('S') => self.scroll_offset += 1,
         // go start description section
-        KeyCode::Char('H') => self.scroll_offset = 0,
-        KeyCode::Char('k') | KeyCode::Up => {
+        KeyCode::Char('A') => self.scroll_offset = 0,
+        KeyCode::Char('w') | KeyCode::Up => {
             self.select_previous(); 
             self.scroll_offset = 0; 
         }
 
         // scroll down into description section
-        KeyCode::Char('K') => {
+        KeyCode::Char('W') => {
             if usize::from(self.scroll_offset) > 0 {
                 self.scroll_offset -= 1;
             }
@@ -732,7 +732,7 @@ pub fn handle_key(&mut self, key: KeyEvent) {
             self.select_last();
             self.scroll_offset = 0; 
         }
-        KeyCode::Char('h') => {
+        KeyCode::Char('a') => {
             // To return to a page
             match self.view_state {
                 AppView::SettingsAccount => {self.view_state = AppView::Settings} 
@@ -749,7 +749,7 @@ pub fn handle_key(&mut self, key: KeyEvent) {
                 _ => {}
             }
         }        
-        KeyCode::Char('l') | KeyCode::Right | KeyCode::Enter => {
+        KeyCode::Char('d') | KeyCode::Right | KeyCode::Enter => {
             // Clone needed because variables will be used in a spawn
             let token = self.token.clone();
             let port = self.config.player.port.clone();
